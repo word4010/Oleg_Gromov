@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Oleg_Gromov | Biography</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #070707;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* LOADER */
+
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #050505;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: 1s;
+        }
+
+        .loader-logo {
+            font-size: 70px;
+            font-weight: 900;
+            color: #d4af37;
+            letter-spacing: 5px;
+            text-shadow: 0 0 25px rgba(212, 175, 55, .6);
+            animation: pulse 2s infinite;
+        }
+
+        .loader-line {
+            width: 260px;
+            height: 5px;
+            background: #222;
+            margin-top: 35px;
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        .loader-fill {
+            width: 0%;
+            height: 100%;
+            background: #d4af37;
+            animation: load 3s forwards;
+        }
+
+        @keyframes load {
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: .6;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: .6;
+            }
+        }
+
+        /* HEADER */
+
+        header {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .95)),
+        }
+
+        @keyframes bgMove {
+            from {
+                transform: scale(1.1) translateY(0);
+            }
+
+            to {
+                transform: scale(1.15) translateY(-20px);
+            }
+        }
+
+        .hero {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 95px;
+            font-weight: 900;
+            color: #d4af37;
+            margin-bottom: 20px;
+            text-shadow: 0 0 35px rgba(212, 175, 55, .35);
+        }
+
+        .hero p {
+            color: #d0d0d0;
+            font-size: 24px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 40px;
+            background: #d4af37;
+            color: black;
+            text-decoration: none;
+            border-radius: 16px;
+            font-weight: 700;
+            transition: .3s;
+            box-shadow: 0 0 25px rgba(212, 175, 55, .3);
+        }
+
+        .btn:hover {
+            transform: translateY(-4px) scale(1.04);
+            background: white;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            width: 92%;
+            max-width: 1350px;
+            margin: auto;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 55px;
+            margin-bottom: 70px;
+            color: #d4af37;
+        }
+
+        /* PROFILE */
+
+        .profile {
+            display: grid;
+            grid-template-columns: 420px 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .profile-image {
+            position: relative;
+        }
+
+        .profile-image img {
+            width: 100%;
+            border-radius: 35px;
+            border: 3px solid #d4af37;
+            box-shadow: 0 0 45px rgba(212, 175, 55, .25);
+        }
+
+        .profile-card {
+            background: linear-gradient(145deg, #121212, #0d0d0d);
+            padding: 45px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, .07);
+        }
+
+        .profile-card h2 {
+            font-size: 48px;
+            color: #d4af37;
+            margin-bottom: 25px;
+        }
+
+        .profile-card p {
+            color: #d0d0d0;
+            line-height: 2;
+            margin-bottom: 18px;
+        }
+
+        /* INFO */
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin-top: 60px;
+        }
+
+        .info-box {
+            background: #111;
+            padding: 30px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, .05);
+            transition: .3s;
+        }
+
+        .info-box:hover {
+            transform: translateY(-6px);
+            border-color: #d4af37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, .12);
+        }
+
+        .info-box h3 {
+            color: #d4af37;
+            margin-bottom: 12px;
+        }
+
+        /* BIO */
+
+        .bio-section {
+            background: #101010;
+            border-left: 5px solid #d4af37;
+            padding: 40px;
+            border-radius: 30px;
+            margin-bottom: 35px;
+            transition: .3s;
+        }
+
+        .bio-section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 25px rgba(212, 175, 55, .08);
+        }
+
+        .bio-section h3 {
+            color: #d4af37;
+            font-size: 34px;
+            margin-bottom: 22px;
+        }
+
+        .bio-section p {
+            color: #d0d0d0;
+            line-height: 2;
+            margin-bottom: 18px;
+        }
+
+        .bio-section ul {
+            padding-left: 25px;
+        }
+
+        .bio-section li {
+            margin-bottom: 12px;
+            color: #d0d0d0;
+        }
+
+        /* CONTACT */
+
+        .contact-card {
+            max-width: 720px;
+            margin: auto;
+            background: linear-gradient(145deg, #111, #0b0b0b);
+            padding: 55px;
+            border-radius: 35px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, .07);
+        }
+
+        .contact-card h2 {
+            color: #d4af37;
+            font-size: 52px;
+            margin-bottom: 25px;
+        }
+
+        .phone {
+            font-size: 70px;
+            font-weight: 900;
+            margin: 25px 0;
+            color: white;
+            text-shadow: 0 0 20px rgba(255, 255, 255, .15);
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: black;
+            padding: 40px;
+            text-align: center;
+            color: #666;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:980px) {
+
+            .hero h1 {
+                font-size: 58px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .profile {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 38px;
+            }
+
+            .profile-card h2 {
+                font-size: 38px;
+            }
+
+            .phone {
+                font-size: 45px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- LOADER -->
+
+    <div id="loader">
+
+        <div class="loader-logo">
+            OLEG_GROMOV
+        </div>
+
+        <div class="loader-line">
+            <div class="loader-fill"></div>
+        </div>
+
+    </div>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="hero">
+
+            <h1>Oleg_Gromov</h1>
+
+            <p>
+                Контроль через інформацію, людей і страх.
+            </p>
+
+            <a href="#bio" class="btn">
+                Відкрити біографію
+            </a>
+
+        </div>
+
+    </header>
+
+    <!-- PROFILE -->
+
+    <section>
+
+        <div class="container">
+
+            <div class="profile">
+
+                <div class="profile-image">
+
+                    <img src="/Знімок екрана 2026-05-13 202208.png">
+
+                </div>
+
+                <div class="profile-card">
+
+                    <h2>Олег Громов</h2>
+
+                    <p>
+                        Олег Громов — український стратег, колишній військовий,
+                        директор ТСН та людина, яка побудувала власну систему
+                        контролю через інформацію, страх і вплив.
+                    </p>
+
+                    <p>
+                        У публічному світі — принциповий журналіст,
+                        якому довіряють мільйони.
+                    </p>
+
+                    <p>
+                        У тіні — архітектор структури,
+                        яку неможливо побачити,
+                        але наслідки її рішень відчувають усі.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="info-grid">
+
+                <div class="info-box">
+                    <h3>ПІБ</h3>
+                    <p>Олег Громов</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>Вік</h3>
+                    <p>67 років</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>Національність</h3>
+                    <p>Українець</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>Місце народження</h3>
+                    <p>м. Дніпро</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>Місце проживання</h3>
+                    <p>м. Львів, к/в 2987</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- BIO -->
+
+    <section id="bio">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Повна RP-Біографія
+            </h2>
+
+            <div class="bio-section">
+
+                <h3>📌 Зовнішні ознаки</h3>
+
+                <p>
+                    Олег — чоловік високого зросту (198 см),
+                    із міцною статурою, загартованою роками служби.
+                    Його волосся посивіло,
+                    але риси обличчя залишилися жорсткими та чіткими.
+                </p>
+
+                <p>
+                    Темно-зелені очі мають важкий погляд,
+                    який змушує співрозмовника відчувати себе під аналізом.
+                </p>
+
+                <p>
+                    Тіло вкрите шрамами —
+                    слідами досвіду, який неможливо купити.
+                </p>
+
+            </div>
+
+            <div class="bio-section">
+
+                <h3>📌 Психологічний портрет</h3>
+
+                <p>
+                    Олег — це контроль у чистому вигляді.
+                </p>
+
+                <ul>
+                    <li>Стриманий</li>
+                    <li>Дисциплінований</li>
+                    <li>Холодний у прийнятті рішень</li>
+                </ul>
+
+                <p>
+                    Він не говорить більше, ніж потрібно,
+                    і ніколи не діє імпульсивно.
+                </p>
+
+                <p>
+                    Його головна риса:
+                    <b>контроль через інформацію, людей і страх.</b>
+                </p>
+
+            </div>
+
+            <div class="bio-section">
+
+                <h3>📌 Дитинство</h3>
+
+                <p>
+                    Його мати, пов’язана зі структурами СБУ,
+                    з ранніх років формувала в ньому не лише інтелект,
+                    а й інструменти виживання.
+                </p>
+
+                <ul>
+                    <li>Рукопашний бій</li>
+                    <li>Бойова підготовка</li>
+                    <li>Психологічна витривалість</li>
+                </ul>
+
+                <p>
+                    Саме тоді заклалась його установка:
+                    <b>світ контролюють ті, хто готовий більше за інших.</b>
+                </p>
+
+            </div>
+
+            <div class="bio-section">
+
+                <h3>📌 Юність</h3>
+
+                <p>
+                    Завдяки здібностям і зв’язкам матері
+                    він потрапив до СБУ в Дніпрі,
+                    але швидко розчарувався в системі.
+                </p>
+
+                <ul>
+                    <li>Бюрократія</li>
+                    <li>Компроміси</li>
+                    <li>Відсутність реального контролю</li>
+                </ul>
+
+                <p>
+                    Він залишив службу
+                    та обрав армію як більш чесну систему.
+                </p>
+
+            </div>
+
+            <div class="bio-section">
+
+                <h3>📌 Доросле життя</h3>
+
+                <p>
+                    В армії він швидко піднявся.
+                    До 25 років:
+                </p>
+
+                <ul>
+                    <li>Капітан</li>
+                    <li>Командир бойового підрозділу</li>
+                    <li>Авторитет для підлеглих</li>
+                </ul>
+
+                <p>
+                    Його фраза:
+                </p>
+
+                <p>
+                    <b>
+                        — Я ніколи не гнався за званням.
+                        Воно саме мене знаходило.
+                    </b>
+                </p>
+
+            </div>
+
+            <div class="bio-section">
+
+                <h3>📌 Переломний момент</h3>
+
+                <p>
+                    Медичне омолодження ледь не вбило його.
+                </p>
+
+                <p>
+                    Кома. Втрата пам’яті. Новий світ.
+                </p>
+
+                <p>
+                    Це зламало старого Олега
+                    та створило нового.
+                </p>
+
+            </div>
+
+            <div class="bio-section">
+
+                <h3>📌 Тіньова трансформація</h3>
+
+                <p>
+                    “Самурай” відкрив йому двері в інший світ.
+                </p>
+
+                <p>
+                    Олег зрозумів:
+                    <b>інформація — абсолютна зброя.</b>
+                </p>
+
+                <ul>
+                    <li>Компромат</li>
+                    <li>Мережі впливу</li>
+                    <li>Контроль через страх</li>
+                </ul>
+
+            </div>
+
+            <div class="bio-section">
+
+                <h3>📌 Союз з генієм</h3>
+
+                <p>
+                    Геніальний хакер став єдиним,
+                    кому Олег дозволив наблизитися.
+                </p>
+
+                <ul>
+                    <li>Рахунки без сліду</li>
+                    <li>Підміна фінансових потоків</li>
+                    <li>Ідеальні фальшиві сліди</li>
+                    <li>“Тіньовий переказ”</li>
+                </ul>
+
+            </div>
+
+            <div class="bio-section">
+
+                <h3>📌 Подвійне життя</h3>
+
+                <p>
+                    На публіці —
+                    чесний директор ТСН та журналіст.
+                </p>
+
+                <p>
+                    У тіні —
+                    архітектор системи,
+                    яка контролює людей через інформацію.
+                </p>
+
+            </div>
+
+            <div class="bio-section">
+
+                <h3>📌 Контроль і зникнення</h3>
+
+                <p>
+                    Під його керівництвом ТСН стало
+                    потужною структурою впливу.
+                </p>
+
+                <p>
+                    Ті, хто копали занадто глибоко —
+                    зникали.
+                </p>
+
+            </div>
+
+            <div class="bio-section">
+
+                <h3>📌 Фізичне відновлення</h3>
+
+                <ul>
+                    <li>Тайський бокс</li>
+                    <li>Військові техніки</li>
+                    <li>Власний стиль бою</li>
+                </ul>
+
+                <p>
+                    Навіть без зброї —
+                    він загроза для групи людей.
+                </p>
+
+            </div>
+
+            <div class="bio-section">
+
+                <h3>📌 Відновлення пам’яті</h3>
+
+                <p>
+                    У 67 років він згадав усе:
+                </p>
+
+                <ul>
+                    <li>Що був генералом ЗСУ</li>
+                    <li>Які рішення приймав</li>
+                    <li>Ким є насправді</li>
+                </ul>
+
+            </div>
+
+            <div class="bio-section">
+
+                <h3>📌 Головна мета</h3>
+
+                <ul>
+                    <li>Абсолютний контроль над собою</li>
+                    <li>Розуміння власного минулого</li>
+                    <li>Недопущення повторної втрати себе</li>
+                </ul>
+
+                <p>
+                    Бо цього разу,
+                    якщо він зникне —
+                    його вже ніхто не поверне.
+                </p>
+
+            </div>
+
+            <div class="bio-section">
+
+                <h3>📌 Спадщина</h3>
+
+                <p>
+                    З віком він почав дивитися
+                    за межі власного життя.
+                </p>
+
+                <p>
+                    Він створює систему,
+                    яка працюватиме навіть після нього —
+                    або самознищиться,
+                    якщо хтось спробує її перехопити.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CONTACT -->
+
+    <section>
+
+        <div class="container">
+
+            <div class="contact-card">
+
+                <h2>Контакти</h2>
+
+                <p>
+                    Офіційний службовий номер:
+                </p>
+
+                <div class="phone">
+                    194
+                </div>
+
+                <p>
+                    Для службового зв’язку та офіційних звернень.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+        © 2026 Oleg_Gromov | RP Biography
+    </footer>
+
+    <script>
+
+        window.addEventListener("load", () => {
+
+            setTimeout(() => {
+
+                document.getElementById("loader").style.opacity = "0";
+
+                setTimeout(() => {
+
+                    document.getElementById("loader").style.display = "none";
+
+                }, 1000);
+
+            }, 3000);
+
+        });
+
+    </script>
+
+</body>
+
+</html>
